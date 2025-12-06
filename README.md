@@ -2,6 +2,11 @@
 
 This repository contains example implementations for publishing logs to the uLogger service. uLogger provides a centralized logging platform that accepts log messages via MQTT and processes them for analysis and monitoring.
 
+## Table of Contents
+
+- [Python Log Publishing Example](#python-log-publishing-example)
+- [Build Pipeline Integration](#build-pipeline-integration)
+
 ## Python Log Publishing Example
 
 The `python-log-publish` directory contains a complete Python implementation for publishing logs to uLogger via MQTT.
