@@ -167,4 +167,50 @@ The implementation supports standard log levels:
 
 - `paho-mqtt>=1.6.1` - MQTT client library for Python
 
+## Build Pipeline Integration
+
+The `example_upload` directory demonstrates how to integrate uLogger firmware upload automation into your CI/CD pipeline using GitHub Actions.
+
+### Overview
+
+This example shows how to:
+- Automatically build and upload firmware to uLogger during CI/CD
+- Extract and track version information from git tags and commits
+- Securely manage MQTT certificates and authentication credentials
+- Integrate with existing GitHub Actions workflows
+- Monitor and verify firmware uploads
+
+### Key Features
+
+- **Automated Builds**: Trigger firmware builds on push, pull requests, or manual dispatch
+- **Version Management**: Automatic semantic versioning from git tags with fallback to development versions
+- **GitHub Secrets**: Secure credential management for certificates and API keys
+- **Artifact Storage**: Automatic backup of built firmware files
+- **Flexible Configuration**: Easy integration with any build system (Make, CMake, custom scripts, etc.)
+
+### Quick Example
+
+The workflow automatically:
+1. Checks out your repository
+2. Builds your firmware (or uses the provided sample)
+3. Extracts version from git tags or generates a development version
+4. Uploads the firmware to uLogger with metadata (git hash, branch, version)
+5. Stores the built firmware as a GitHub artifact
+
+### Setup
+
+1. Fork or clone the [uLogger example_upload repository](https://github.com/ulogger-ai/example_upload)
+2. Configure GitHub Secrets with your uLogger credentials:
+   - `ULOGGER_CUSTOMER_ID`
+   - `ULOGGER_APPLICATION_ID`
+   - `ULOGGER_DEVICE_TYPE`
+   - `ULOGGER_CERT_DATA` (MQTT certificate)
+   - `ULOGGER_KEY_DATA` (MQTT private key)
+3. Customize `.github/workflows/build-and-upload.yml` with your build commands
+4. Push changes and the workflow will automatically upload to uLogger
+
+### Repository
+
+For complete documentation and working examples, visit: [ulogger-ai/example_upload](https://github.com/ulogger-ai/example_upload)
+
 For more information about uLogger or additional examples, please refer to the official documentation.
